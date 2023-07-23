@@ -28,7 +28,11 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				c = va_arg(ap, int);
-
+				if (!c)
+				{
+					write(1, "warning: format ‘%c’ expects a matching ‘int’ argument [-Wformat=]\n" , 75);
+					return (number);
+				}
 				number += write(1, &c, 1);
 			}
 			else if (format[i] == 's')
