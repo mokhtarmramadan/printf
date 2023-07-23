@@ -15,6 +15,8 @@ int _printf(const char *format, ...)
 	int number;
 	int c;
 	char *s;
+	int d;
+
 	va_start(ap, format);
 	i = 0;
 	number = 0;
@@ -31,7 +33,19 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s = va_arg(ap, char *);
-				print_string(s);
+       
+
+        			number = 0;
+        			if (s == NULL)
+        			{
+                			s = "(null)";
+        			}
+        			d = 0;
+        			while (s[d] != '\0')
+        			{
+                		number += write(1, &s[d], 1);
+                		d++;
+        			}
 				
 			}
 			else if (format[i] == '%')
