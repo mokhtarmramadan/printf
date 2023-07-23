@@ -34,6 +34,11 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s = va_arg(ap, char *);
+				
+				if (s == NULL)
+				{
+					s = "(null)";
+				}
 				d = 0;
 				while (s[d] != '\0')
 				{
