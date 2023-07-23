@@ -14,7 +14,7 @@ int _printf(const char *format, ...)
 	int i;
 	int number;
 	int c;
-
+	char *s;
 	va_start(ap, format);
 	i = 0;
 	number = 0;
@@ -30,7 +30,8 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 's')
 			{
-				print_string(va_arg(ap, char *));
+				s = va_arg(ap, char *);
+				print_string(s);
 				
 			}
 			else if (format[i] == '%')
