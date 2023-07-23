@@ -33,9 +33,6 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				s = va_arg(ap, char *);
-       
-
-        			number = 0;
         			if (s == NULL)
         			{
                 			s = "(null)";
@@ -43,8 +40,8 @@ int _printf(const char *format, ...)
         			d = 0;
         			while (s[d] != '\0')
         			{
-                		number += write(1, &s[d], 1);
-                		d++;
+                			number += write(1, &s[d], 1);
+                			d++;
         			}
 				
 			}
