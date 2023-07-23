@@ -12,7 +12,9 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i, number;
+	int i;
+	int number;
+	int c;
 
 	va_start(ap, format);
 	i = 0;
@@ -24,7 +26,9 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				number += write(1, &va_arg(ap, int), 1);
+				c = va_arg(ap, int);
+
+				number += write(1, &c, 1);
 			}
 			else if (format[i] == 's')
 			{
