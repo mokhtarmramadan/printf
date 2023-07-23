@@ -20,6 +20,9 @@ int _printf(const char *format, ...)
 	int integer;
 	int div;
 	char digit;
+	unsigned int b;
+	unsigned int u;
+	char segment;
 
 	va_start(ap, format);
 	i = 0;
@@ -81,6 +84,19 @@ int _printf(const char *format, ...)
                         			div/= 10;
                     			}
                     			break;
+
+				case 'b':
+					b = va_arg(ap, unsigned int);
+					u = ~0u >> 1;
+
+					while (u)
+					{
+						segment = (b & u) ? '1' : '0';
+						write(1, &segment, 1);
+						number++;
+						u >>= 1;
+					}
+					break;
 
 				default:
 					number += write(1, "Error: invalid format specifier\n", 35);;
