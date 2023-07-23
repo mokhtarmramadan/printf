@@ -4,10 +4,9 @@
 #include <unistd.h>
 
 /**
- * _printf - prints output according to a format.
- * @format: character string.
- *
- * Return: the number of characters printed (excluding the null byte used to end output to strings).
+ * _printf - a function that produces output according to a format
+ * @format: string.
+ *Return: the number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -15,6 +14,8 @@ int _printf(const char *format, ...)
 	int i;
 	int number;
 	int c;
+	char *s;
+	int d;
 
 	va_start(ap, format);
 	i = 0;
@@ -32,7 +33,14 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 's')
 			{
-				number += write(1, va_arg(ap, char *), strlen(va_arg(ap, char *)));
+				s = va_arg(ap, char *);
+				d = 0;
+				while (s[d] != '\0')
+				{
+
+					number += write(1, &s[d], 1);
+					d++;
+				}
 			}
 			else if (format[i] == '%')
 			{
