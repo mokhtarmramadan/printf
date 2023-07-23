@@ -85,19 +85,6 @@ int _printf(const char *format, ...)
                     			}
                     			break;
 
-				case 'b':
-					b = va_arg(ap, unsigned int);
-					u = ~0u >> 1;
-
-					while (u)
-					{
-						segment = (b & u) ? '1' : '0';
-						write(1, &segment, 1);
-						number++;
-						u >>= 1;
-					}
-					break;
-
 				default:
 					number += write(1, "Error: invalid format specifier\n", 35);;
 					exit(1);
