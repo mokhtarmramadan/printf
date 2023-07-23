@@ -20,9 +20,6 @@ int _printf(const char *format, ...)
 	int integer;
 	int div;
 	char digit;
-	unsigned int b;
-	unsigned int u;
-	char segment;
 
 	va_start(ap, format);
 	i = 0;
